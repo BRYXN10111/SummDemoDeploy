@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h2>Register</h2>
+  <form method="post">
+    {{ form.hidden_tag() }}
+    <label>Username
+        {{ form.username(size=30) }}
+        {% for err in form.username.errors %}<div class="small error-text">{{ err }}</div>{% endfor %}
+    </label>
+
+    <label>Full name
+        {{ form.full_name(size=60) }}
+        {% for err in form.full_name.errors %}<div class="small error-text">{{ err }}</div>{% endfor %}
+    </label>
+
+    <label>Email
+        {{ form.email(size=60) }}
+        {% for err in form.email.errors %}<div class="small error-text">{{ err }}</div>{% endfor %}
+    </label>
+
+    <label>Age
+        {{ form.age() }}
+        {% for err in form.age.errors %}<div class="small error-text">{{ err }}</div>{% endfor %}
+    </label>
+
+    <label>Bio
+        {{ form.bio(rows=4) }}
+        {% for err in form.bio.errors %}<div class="small error-text">{{ err }}</div>{% endfor %}
+    </label>
+
+    <div style="margin-top: 1rem;">{{ form.submit() }}</div>
+</form>
+{% endblock %}

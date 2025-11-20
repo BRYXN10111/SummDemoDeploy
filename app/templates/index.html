@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="actions">
+    <a class="btn" href="{{ url_for('main.register') }}">Register new user</a>
+</div>
+<h2>Registered users</h2>
+{% if users %}
+    {% for u in users %}
+        <div class="card">
+            <strong>{{ u['full_name'] }} ({{ u['username'] }})</strong>
+            <div class="small">{{ u['email'] }}</div>
+            <div class="actions">
+                <a href="{{ url_for('main.profile', user_id=u['id']) }}">View</a> |
+                <a href="{{ url_for('main.update', user_id=u['id']) }}">Edit</a>
+            </div>
+        </div>
+    {% endfor %}
+{% else %}
+    <p>No users yet. Be the first to register.</p>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h2>{{ user['full_name'] }} ({{ user['username'] }})</h2>
+  <div class="card">
+    <div><strong>Email:</strong> {{ user['email'] }}</div>
+    <div><strong>Age:</strong> {{ user['age'] or '-' }}</div>
+    <div style="margin-top:0.5rem"><strong>Bio:</strong>
+      <div class="small">{{ user['bio'] or 'No bio provided.' }}</div>
+    </div>
+    <div class="actions">
+      <a href="{{ url_for('main.update', user_id=user['id']) }}">Edit profile</a> |
+      <a href="{{ url_for('main.index') }}">Back to list</a>
+    </div>
+  </div>
+{% endblock %}

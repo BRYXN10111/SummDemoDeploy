@@ -1,0 +1,20 @@
+1. Valid Registration
+Prupose: verify normal flow
+Input: username=bob, full_name=Bob Builder, email=bob@example.com, age=30, bio=Can we fix?
+Steps: open /register, submit form
+Expected: redirect to / (home), flash User registered successfully., new user appears in list.
+Actual Results: Result as Expected
+
+2. Duplicate username / email
+Purpose: server-side uniqueness constraints
+Input: register username=Bob, email=bob@example.com
+Steps: open /register, submit form
+Expected: flash erro Error saving user: username or email might already exist. No duplicated row inserted
+Actual Results: Result as Expected
+
+3. Invalid email format
+Purpose: validation
+Input: email=not-an-email
+Steps: submit registration
+Expected: form validation error shown under the Email field (e.g. Invalid email address.) and no redirect.
+Actual Results: Result as Expected
