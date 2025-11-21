@@ -11,7 +11,7 @@ def create_app(test_config=None):
     app = Flask(__name__, instance_relative_config=False)
     app.config.from_mapping(
         SECRET_KEY='dev-secret-key-change-me',  # change this for production
-        DATABASE=os.path.join(app.instance_path, 'users_demo.db')
+        DATABASE=os.path.join(app.instance_path, 'users.db')
     )
 
     if test_config is not None:

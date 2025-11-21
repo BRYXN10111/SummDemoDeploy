@@ -1,15 +1,15 @@
 1. Valid Registration
-Prupose: verify normal flow
-Input: username=bob, full_name=Bob Builder, email=bob@example.com, age=30, bio=Can we fix?
+Purpose: verify normal flow
+Input: username=FrankS, full_name=Frank Sinatra, email=franksinatra@example.com, age=53, bio=I did it MY WAYYY!
 Steps: open /register, submit form
 Expected: redirect to / (home), flash User registered successfully., new user appears in list.
 Actual Results: Result as Expected
 
 2. Duplicate username / email
 Purpose: server-side uniqueness constraints
-Input: register username=Bob, email=bob@example.com
+Input: register username=FrankS, email=franksinatra@example.com
 Steps: open /register, submit form
-Expected: flash erro Error saving user: username or email might already exist. No duplicated row inserted
+Expected: flash error Errorr: username or email already exist. No duplicated row inserted
 Actual Results: Result as Expected
 
 3. Invalid email format
@@ -18,3 +18,15 @@ Input: email=not-an-email
 Steps: submit registration
 Expected: form validation error shown under the Email field (e.g. Invalid email address.) and no redirect.
 Actual Results: Result as Expected
+
+4. Empty required fields (edge case)
+Purpose: form validation
+Input: username="", email=""
+Expected: “Please fill in this field.”
+Actual Results: Result as Expected
+
+5. Age below valid range
+Input: age = -5
+Expected: “Value must be greater than or equal to 0.”
+Actual Results: Result as Expected
+
